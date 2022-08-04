@@ -7,3 +7,4 @@ Medical imaging doctor developed by Mobifone Service
 - GPU: GeForce GT 1030
 - Python: 3.8.0
 - Pytorch version: 1.12.0
+- Tensorflow version: 2.9.1
