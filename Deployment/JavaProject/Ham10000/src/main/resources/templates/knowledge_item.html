@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="header :: header (pageTitle='Knowledge Item') ">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<nav th:replace="header :: navigation"></nav>
+
+
+
+
+
+
+
+
+
+
+<div class="container">
+    <div id="content" class="content">
+        <div class="container">
+            <div class="col-lg-8">
+                <table class="table table-bordered table-sm">
+                    <tbody>
+                        <tr>
+                            <th style="text-align: right; vertical-align: middle">Title:</th>
+                            <td style="horiz-align: left; vertical-align: middle"  th:utext="${knowledge.getTitle()}" ></td>
+
+
+                        <tr>
+                            <th style="text-align: right; vertical-align: middle">Detail:</th>
+                            <td style="horiz-align: left; vertical-align: middle"  th:utext="${knowledge.getDetail()}" ></td>
+                        </tr>
+
+                        <tr>
+                            <th style="text-align: right; vertical-align: middle">Extra Information:</th>
+                            <td style="horiz-align: left; vertical-align: middle"  th:utext="${knowledge.getDescription()}" ></td>
+                        </tr>
+
+                        <tr>
+                            <th style="text-align: right; vertical-align: middle">Link:</th>
+                            <td style="horiz-align: left; vertical-align: middle"  >
+
+                                <a th:href="${knowledge.getUrl()}" target="_blank" th:text="${knowledge.getUrl()}"></a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th style="text-align: right; vertical-align: middle">Image:</th>
+
+
+                            <td style="vertical-align: middle; horiz-align: left; "><a th:if="${knowledge.getImage() != null && knowledge.getImage().length() > 3}" th:href="${knowledge.getImage()}" target="_blank">
+                                <img  th:src="${knowledge.getImage()}" style=" max-width: 600px " alt="No Image" />
+
+                            </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="text-align: right; vertical-align: middle">Video:</th>
+                            <td style="horiz-align: left; vertical-align: middle"  >
+                                <video th:if="${knowledge.getVideo() != null && knowledge.getVideo().length() > 3}"  th:attr="poster=${knowledge.getImage()}"
+                                       id="my-video"
+                                       class="video-js"
+                                       controls
+                                       preload="auto"
+                                       width="600"
+                                       height="320"
+                                       data-setup="{}"
+                                >
+                                    <source th:src="${knowledge.getVideo()}" type="video/mp4" />
+                                    <!--    <source src="MY_VIDEO.webm" type="video/webm" />-->
+                                </video>
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <th style="text-align: right; vertical-align: middle">Num reviewed:</th>
+                            <td style="horiz-align: left; vertical-align: middle"  th:utext="${knowledge.getNumReviewed()}" ></td>
+                        </tr>
+
+                        <tr>
+                            <th style="text-align: right; vertical-align: middle">Date created:</th>
+                            <td style="horiz-align: left; vertical-align: middle"  th:utext="${knowledge.getDateCreated()}" ></td>
+                        </tr>
+
+                        <tr>
+                            <th style="text-align: right; vertical-align: middle">Is Archived:</th>
+                            <td style="horiz-align: left; vertical-align: middle"  th:utext="${knowledge.getIsArchived()}" ></td>
+                        </tr>
+
+                        <tr>
+                            <th style="text-align: right; vertical-align: middle">
+                                <a th:href="|../../del_knowledge/${knowledge.getId()}/${menu_id}|" >
+                                    <button class="btn btn-warning btn-sm">Delete</button>
+                                </a>
+
+                            </th>
+                         </tr>
+                    </tbody>
+
+                </table>
+
+
+            </div>
+
+
+<!--            update knowledge-->
+            <div class="col-lg-4">
+                <article class="col-lg-12">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="panel panel-form">
+                                <div class="panel-heading" style="background: purple">
+                                    <h3 class="title"  th:text="|Update ${knowledge.getTitle()} Knowledge|" ></h3>
+                                </div>
+                                <div class="panel-body">
+                                    <form role="form" method="post" enctype="multipart/form-data" th:action="|../../update_knowledge/${knowledge.getId()}/${menu_id}|" >
+                                        <!--                                        <span style="color: red" th:if="${wrongcridentical}"-->
+                                        <!--                                              th:text="#{wrongcridentical}">-->
+                                        <!--										</span>-->
+
+                                        <!-- Knowledge title -->
+                                        <div class="form-group">
+                                            <label for="title" class="control-label" >Knowledge Title</label>
+                                            <!--                                            <span style="color: red" th:if="${#fields.hasErrors('username')}" th:errors="*{username}" ></span>-->
+                                            <div class="has-feedback">
+                                                <input type="text" class="form-control" id="title" name="title" placeholder="Title" th:value="${knowledge.getTitle()}" />
+                                                <span class="fa fa-keyboard-o form-control-feedback" aria-hidden="true"></span>
+                                            </div>
+                                        </div>
+
+                                        <!-- Knowledge detail -->
+                                        <div class="form-group">
+                                            <label for="detail" class="control-label"  >Knowledge Detail</label>
+                                            <!--                                            <span style="color: red" th:if="${#fields.hasErrors('username')}" th:errors="*{username}" ></span>-->
+                                            <div class="has-feedback">
+                                                <input type="text" class="form-control" id="detail" name="detail" placeholder="Detail" th:value="${knowledge.getDetail()}">
+                                                <span class="fa fa-keyboard-o form-control-feedback" aria-hidden="true"></span>
+                                            </div>
+                                        </div>
+
+                                        <!-- Knowledge desc -->
+                                        <div class="form-group">
+                                            <label for="desc" class="control-label" >Knowledge Extra Infomation</label>
+                                            <!--                                            <span style="color: red" th:if="${#fields.hasErrors('username')}" th:errors="*{username}" ></span>-->
+                                            <div class="has-feedback">
+                                                <a href="https://htmlg.com/html-editor/"  target="_blank">>>> HTML Editor</a>
+                                                <textarea th:if="${knowledge.getDescription() != null && knowledge.getDescription().trim().length() > 0}" class="form-control" id="desc" name="desc" placeholder="Extra Info"  rows="10" cols="30" th:text="${knowledge.getDescription()}" >
+
+                                                </textarea>
+
+                                                <textarea th:if="${knowledge.getDescription() == null || knowledge.getDescription().trim().length() == 0}" class="form-control" id="desc" name="desc" placeholder="Extra Info"  rows="10" cols="30" >
+<pre><code class="language-java">
+
+</code></pre>
+                                                </textarea>
+                                                <span class="fa fa-keyboard-o form-control-feedback" aria-hidden="true"></span>
+                                            </div>
+                                        </div>
+
+                                        <!-- Knowledge url -->
+                                        <div class="form-group">
+                                            <label for="url" class="control-label" >Knowledge Url</label>
+                                            <!--                                            <span style="color: red" th:if="${#fields.hasErrors('username')}" th:errors="*{username}" ></span>-->
+                                            <div class="has-feedback">
+                                                <input type="text" class="form-control" id="url" name="url" placeholder="Url"  th:value="${knowledge.getUrl()}">
+                                                <span class="fa fa-keyboard-o form-control-feedback" aria-hidden="true"></span>
+                                            </div>
+                                        </div>
+
+                                        <!-- Knowledge image -->
+                                        <div class="form-group">
+                                            <label for="image" class="control-label" >Knowledge Image</label>
+                                            <!--                                            <span style="color: red" th:if="${#fields.hasErrors('username')}" th:errors="*{username}" ></span>-->
+                                            <div class="has-feedback">
+                                                <input type="file" class="form-control" id="image" name="image" placeholder="Image">
+                                                <span class="fa fa-keyboard-o form-control-feedback" aria-hidden="true"></span>
+                                            </div>
+                                        </div>
+
+                                        <!-- Knowledge video -->
+                                        <div class="form-group">
+                                            <label for="video" class="control-label" >Knowledge Video</label>
+                                            <!--                                            <span style="color: red" th:if="${#fields.hasErrors('username')}" th:errors="*{username}" ></span>-->
+                                            <div class="has-feedback">
+                                                <input type="file" class="form-control" id="video" name="video" placeholder="Video">
+                                                <span class="fa fa-keyboard-o form-control-feedback" aria-hidden="true"></span>
+                                            </div>
+                                        </div>
+
+
+                                        <button  type="submit" class="btn btn-primary" style="background: purple">Submit</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <div class="clearfix"></div>
+
+
+            </div>
+        </div>
+
+
+
+    </div><!-- end content -->
+</div> <!-- end container -->
+
+
+
+
+
+
+
+
+
+<div th:replace="header :: footer"></div>
+</body>
+</html>

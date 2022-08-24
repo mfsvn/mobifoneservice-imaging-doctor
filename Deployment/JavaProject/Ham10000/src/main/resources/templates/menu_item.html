@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="header :: header (pageTitle=${menu.getTitle()}) ">
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+ 
+    </style>
+</head>
+<body>
+
+<nav th:replace="header :: navigation"></nav>
+
+
+
+
+
+
+
+
+
+
+<div class="container">
+    <div id="content" class="content">
+        <div class="container">
+            <div class="col-lg-6">
+                <article class="col-lg-12">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="panel panel-form">
+                                <div class="panel-heading">
+                                    <h3 class="title" th:text="${menu.getTitle()}" ></h3>
+                                    <a style="color: darkblue" th:href="|../delete_menu/${menu.getId()}|">Delete</a>
+                                </div>
+                                <div class="panel-body">
+                                    <form role="form" method="post" th:action="|../update_menu/${menu.getId()}|" >
+<!--                                        <span style="color: red" th:if="${wrongcridentical}"-->
+<!--                                              th:text="#{wrongcridentical}">-->
+<!--										</span>-->
+
+                                        <!-- Update name -->
+                                        <div class="form-group">
+                                            <label for="m_name" class="control-label" >Update menu name</label>
+<!--                                            <span style="color: red" th:if="${#fields.hasErrors('username')}" th:errors="*{username}" ></span>-->
+                                            <div class="has-feedback">
+                                                <input type="text" class="form-control" id="m_name" name="m_name" th:placeholder="${menu.getTitle()}" >
+                                                <span class="fa fa-keyboard-o form-control-feedback" aria-hidden="true"></span>
+                                            </div>
+                                        </div>
+                                        <button  type="submit" class="btn btn-primary">Submit</button>
+                                    </form>
+
+                                    <br>
+
+                                    <h3 class="title" > Or</h3>
+
+                                    <form role="form" method="post" th:action="|../add_sub_menu/${menu.getId()}|" >
+                                        <!--                                        <span style="color: red" th:if="${wrongcridentical}"-->
+                                        <!--                                              th:text="#{wrongcridentical}">-->
+                                        <!--										</span>-->
+
+                                        <!-- Update name -->
+                                        <div class="form-group">
+                                            <label for="m_name2" class="control-label" >Add a sub-menu</label>
+                                            <!--                                            <span style="color: red" th:if="${#fields.hasErrors('username')}" th:errors="*{username}" ></span>-->
+                                            <div class="has-feedback">
+                                                <input type="text" class="form-control" id="m_name2" name="m_name2" placeholder="Sub menu name" >
+                                                <span class="fa fa-keyboard-o form-control-feedback" aria-hidden="true"></span>
+                                            </div>
+                                        </div>
+
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <div class="clearfix"></div>
+            </div>
+
+
+
+
+
+<!--            Add Knowledge-->
+            <div class="col-lg-6">
+                <article class="col-lg-12">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="panel panel-form">
+                                <div class="panel-heading" style="background: purple">
+                                    <h3 class="title"  th:text="|Add ${menu.getTitle()} Knowledge|" ></h3>
+                                </div>
+                                <div class="panel-body">
+                                    <form role="form" method="post" enctype="multipart/form-data" th:action="|../add_knowledge/${menu.getId()}|" >
+                                        <!--                                        <span style="color: red" th:if="${wrongcridentical}"-->
+                                        <!--                                              th:text="#{wrongcridentical}">-->
+                                        <!--										</span>-->
+
+                                        <!-- Knowledge title -->
+                                        <div class="form-group">
+                                            <label for="title" class="control-label" >Knowledge Title</label>
+                                            <!--                                            <span style="color: red" th:if="${#fields.hasErrors('username')}" th:errors="*{username}" ></span>-->
+                                            <div class="has-feedback">
+                                                <input type="text" class="form-control" id="title" name="title" placeholder="Title">
+                                                <span class="fa fa-keyboard-o form-control-feedback" aria-hidden="true"></span>
+                                            </div>
+                                        </div>
+
+                                        <!-- Knowledge detail -->
+                                        <div class="form-group">
+                                            <label for="detail" class="control-label" >Knowledge Detail</label>
+                                            <!--                                            <span style="color: red" th:if="${#fields.hasErrors('username')}" th:errors="*{username}" ></span>-->
+                                            <div class="has-feedback">
+                                                <input type="text" class="form-control" id="detail" name="detail" placeholder="Detail">
+                                                <span class="fa fa-keyboard-o form-control-feedback" aria-hidden="true"></span>
+                                            </div>
+                                        </div>
+
+                                        <!-- Knowledge desc -->
+                                        <div class="form-group">
+                                            <label for="desc" class="control-label" >Knowledge Extra Infomation</label>
+                                            <!--                                            <span style="color: red" th:if="${#fields.hasErrors('username')}" th:errors="*{username}" ></span>-->
+                                            <div class="has-feedback">
+                                                <a href="https://htmlg.com/html-editor/"  target="_blank">>>> HTML Editor</a>
+                                                <textarea class="form-control" id="desc" name="desc" placeholder="Extra Info"  rows="10" cols="30">
+<pre><code class="language-java">
+
+</code></pre>
+                                                </textarea>
+                                                <span class="fa fa-keyboard-o form-control-feedback" aria-hidden="true"></span>
+                                            </div>
+                                        </div>
+
+                                        <!-- Knowledge url -->
+                                        <div class="form-group">
+                                            <label for="url" class="control-label" >Knowledge Url</label>
+                                            <!--                                            <span style="color: red" th:if="${#fields.hasErrors('username')}" th:errors="*{username}" ></span>-->
+                                            <div class="has-feedback">
+                                                <input type="text" class="form-control" id="url" name="url" placeholder="Url">
+                                                <span class="fa fa-keyboard-o form-control-feedback" aria-hidden="true"></span>
+                                            </div>
+                                        </div>
+
+                                        <!-- Knowledge image -->
+                                        <div class="form-group">
+                                            <label for="image" class="control-label" >Knowledge Image</label>
+                                            <!--                                            <span style="color: red" th:if="${#fields.hasErrors('username')}" th:errors="*{username}" ></span>-->
+                                            <div class="has-feedback">
+                                                <input type="file" class="form-control" id="image" name="image" placeholder="Image">
+                                                <span class="fa fa-keyboard-o form-control-feedback" aria-hidden="true"></span>
+                                            </div>
+                                        </div>
+
+                                        <!-- Knowledge video -->
+                                        <div class="form-group">
+                                            <label for="video" class="control-label" >Knowledge Video</label>
+                                            <!--                                            <span style="color: red" th:if="${#fields.hasErrors('username')}" th:errors="*{username}" ></span>-->
+                                            <div class="has-feedback">
+                                                <input type="file" class="form-control" id="video" name="video" placeholder="Video">
+                                                <span class="fa fa-keyboard-o form-control-feedback" aria-hidden="true"></span>
+                                            </div>
+                                        </div>
+
+
+                                        <button  type="submit" class="btn btn-primary" style="background: purple">Submit</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <div class="clearfix"></div>
+
+
+            </div>
+        </div>
+
+
+        <div class="container">
+
+                <article class="col-lg-12">
+                    <div class="row">
+                            <div class="table-responsive  ">
+                            <table class="table  table-bordered table-sm">
+                                <thead class="thead-light">
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Title</th>
+                                    <th scope="col">Detail</th>
+                                    <th scope="col">Extra Info</th>
+                                    <th scope="col">Url</th>
+                                    <th scope="col">Image</th>
+                                    <th scope="col">Video</th>
+                                    <th scope="col">Num reviewed</th>
+                                    <th scope="col">Date created</th>
+                                    <th scope="col">Archiving</th>
+                                    <th scope="col">Delete</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="knowledge, iter : ${knowledge_list}">
+                                    <th scope="row" th:text="${iter.index + 1}"></th>
+                                    <td style="vertical-align: middle">
+                                        <a th:href="|../knowledge/${knowledge.getId()}/${menu_id}|" th:text="${knowledge.getTitle()}" target="_blank" ></a>
+
+                                    </td>
+                                    <td style="vertical-align: middle">
+                                        <span th:utext="${knowledge.getDetail()}" ></span>
+
+                                    </td>
+                                    <td style="word-wrap:break-word; max-width: 400px; vertical-align: middle" >
+                                        <div>
+                                            <p  th:utext="${knowledge.getDescription()}" ></p>
+                                         </div>
+                                    </td>
+
+                                    <td style="max-width: 150px; overflow: hidden; vertical-align: middle" >
+                                        <a th:href="${knowledge.getUrl()}" target="_blank" th:text="${knowledge.getUrl()}"></a>
+
+                                    </td>
+                                    <td style="vertical-align: middle"><a th:if="${knowledge.getImage() != null && knowledge.getImage().length() > 3}" th:href="${knowledge.getImage()}" target="_blank">
+                                        <img  th:src="${knowledge.getImage()}" style="height: 50px; max-width: 100px" alt="No Image" />
+                                    </a>
+                                    </td>
+                                    <td  style="vertical-align: middle" >
+                                        <video th:if="${knowledge.getVideo() != null && knowledge.getVideo().length() > 3}"  th:attr="poster=${knowledge.getImage()}"
+                                               id="my-video"
+                                                class="video-js"
+                                                controls
+                                                preload="auto"
+                                                width="200"
+                                                height="100"
+                                                data-setup="{}"
+                                        >
+                                            <source th:src="${knowledge.getVideo()}" type="video/mp4" />
+                                            <!--    <source src="MY_VIDEO.webm" type="video/webm" />-->
+                                        </video>
+
+
+                                    </td>
+                                    <td style="vertical-align: middle" th:text="${knowledge.getNumReviewed()}" ></td>
+                                    <td style="vertical-align: middle" th:text="${knowledge.getDateCreated()}" ></td>
+                                    <td style="vertical-align: middle"   >
+                                        <a th:if="${knowledge.getIsArchived() == 0}" th:href="|../archieve_knowledge/${knowledge.getId()}/${menu_id}|" >
+                                            <button class="btn btn-danger btn-sm">Archive</button>
+                                        </a>
+
+                                        <a th:if="${knowledge.getIsArchived() == 1}" th:href="|../unarchieve_knowledge/${knowledge.getId()}/${menu_id}|" >
+                                            <button class="btn btn-info btn-sm">Un-Archive</button>
+                                        </a>
+
+                                    </td>
+                                    <td style="vertical-align: middle" >
+                                        <a th:href="|../del_knowledge/${knowledge.getId()}/${menu_id}|" >
+                                            <button class="btn btn-default btn-sm">Delete</button>
+                                        </a>
+
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            </div>
+
+                    </div>
+                </article>
+                <div class="clearfix"></div>
+
+        </div>
+    </div><!-- end content -->
+</div> <!-- end container -->
+
+
+
+
+
+
+
+
+
+<div th:replace="header :: footer"></div>
+</body>
+</html>

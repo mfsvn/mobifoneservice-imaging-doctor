@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="header :: header (pageTitle='Menu - Kaka') ">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<nav th:replace="header :: navigation"></nav>
+
+<div class="container">
+    <div id="content" class="content">
+        <div class="container">
+            <div class=" col-lg-5">
+                <ul class="tree"  th:each="item : ${menu_items}" th:if="${item.getParentId() == null}">
+                    <li  class="menu-cap-1" ><a th:href="|menu_item/${item.getId()}|"><span th:text="${item.getTitle()}"></span></a></li>
+                    <!-- menu cap 2-->
+                    <ul th:each="item2 : ${menu_items}" th:if="${item2.getParentId() == item.getId()}">
+                        <li class="menu-cap-2" ><a th:href="|menu_item/${item2.getId()}|"><span th:text="${item2.getTitle()}"></span></a></li>
+                        <!-- menu cap 3-->
+                        <ul th:each="item3 : ${menu_items}" th:if="${item3.getParentId() == item2.getId()}">
+                            <li class="menu-cap-3" ><a th:href="|menu_item/${item3.getId()}|"><span th:text="${item3.getTitle()}"></span></a></li>
+                            <!-- menu cap 4-->
+                            <ul th:each="item4 : ${menu_items}" th:if="${item4.getParentId() == item3.getId()}">
+                                <li class="menu-cap-4" ><a th:href="|menu_item/${item4.getId()}|"><span th:text="${item4.getTitle()}"></span></a></li>
+                                <!-- menu cap 5-->
+                                <ul th:each="item5 : ${menu_items}" th:if="${item5.getParentId() == item4.getId()}">
+                                    <li class="menu-cap-5" ><a th:href="|menu_item/${item5.getId()}|"><span th:text="${item5.getTitle()}"></span></a></li>
+
+                                </ul>
+                            </ul>
+                        </ul>
+                    </ul>
+
+                </ul>
+            </div>
+
+            <div class=" col-lg-5">
+                <ul class="tree"  th:each="item : ${menu_items}" th:if="${item.getParentId() == null}">
+                    <li  class="menu-cap-1" ><a th:href="|menu_item_only/${item.getId()}|"><span th:text="${item.getTitle()}"></span></a></li>
+                    <!-- menu cap 2-->
+                    <ul th:each="item2 : ${menu_items}" th:if="${item2.getParentId() == item.getId()}">
+                        <li class="menu-cap-2" ><a th:href="|menu_item_only/${item2.getId()}|"><span th:text="${item2.getTitle()}"></span></a></li>
+                        <!-- menu cap 3-->
+                        <ul th:each="item3 : ${menu_items}" th:if="${item3.getParentId() == item2.getId()}">
+                            <li class="menu-cap-3" ><a th:href="|menu_item_only/${item3.getId()}|"><span th:text="${item3.getTitle()}"></span></a></li>
+                            <!-- menu cap 4-->
+                            <ul th:each="item4 : ${menu_items}" th:if="${item4.getParentId() == item3.getId()}">
+                                <li class="menu-cap-4" ><a th:href="|menu_item_only/${item4.getId()}|"><span th:text="${item4.getTitle()}"></span></a></li>
+                                <!-- menu cap 5-->
+                                <ul th:each="item5 : ${menu_items}" th:if="${item5.getParentId() == item4.getId()}">
+                                    <li class="menu-cap-5" ><a th:href="|menu_item_only/${item5.getId()}|"><span th:text="${item5.getTitle()}"></span></a></li>
+
+                                </ul>
+                            </ul>
+                        </ul>
+                    </ul>
+
+                </ul>
+            </div>
+
+            <div class="col-lg-2">
+                <article class="col-lg-12">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="panel panel-form">
+                                <div class="panel-heading">
+                                    <h3 class="title" >Add Top-level Menu</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <form role="form" method="post" th:action="|add_top_menu/|" >
+                                        <!--                                        <span style="color: red" th:if="${wrongcridentical}"-->
+                                        <!--                                              th:text="#{wrongcridentical}">-->
+                                        <!--										</span>-->
+
+                                        <!-- Update name -->
+                                        <div class="form-group">
+                                            <label for="m_name" class="control-label" >Top-level menu name</label>
+                                            <!--                                            <span style="color: red" th:if="${#fields.hasErrors('username')}" th:errors="*{username}" ></span>-->
+                                            <div class="has-feedback">
+                                                <input type="text" class="form-control" id="m_name" name="m_name" placeholder="Top-menu-name" >
+                                                <span class="fa fa-keyboard-o form-control-feedback" aria-hidden="true"></span>
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </form>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div><!-- end content -->
+</div> <!-- end container -->
+
+
+<div th:replace="header :: footer"></div>
+</body>
+</html>

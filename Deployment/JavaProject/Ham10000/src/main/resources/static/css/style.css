@@ -1,0 +1,82 @@
+@CHARSET "UTF-8";
+
+#content {
+	min-height: 700px;
+}
+
+.footer-text {
+	text-align: center;
+}
+
+#footer-section {
+	background-color: #0B3259 ;
+	height: 150px;
+	text-align: left;
+	padding: 20px 0px; 
+	color: white ;
+/* 	font-family: Times New Roman; */
+}
+
+.container {
+	width: 98% !important;
+} 
+
+.navbar-inverse {
+	background-color: #0B3259;
+	border-color: #0B3259; 
+}
+
+.navbar{
+	margin-bottom: 10px !important;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+	color: white;
+}
+
+.vocal { 
+	padding: 2px; 
+	margin-left: 2px;
+	min-height: 181px;
+	
+	-webkit-box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 1);
+	-moz-box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 1);
+	box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 1);
+	
+	
+}
+
+.vocal > p:FIRST-OF-TYPE{
+	min-height: 76px;
+}
+
+.vocal:HOVER { 
+	background-color: #d0e7ef;
+	
+}
+
+.col-md-4, .col-lg-4 {
+	
+	padding-left: 0px;
+	padding-right: 3px;
+	margin-top: 7px;
+/* 	overflow:  scroll; */
+	
+}
+
+/* .col-xs-12 { */
+/* 	height: 180px; */
+/* } */
+
+.col-md-4:HOVER, .col-lg-4:HOVER { 
+	
+}
+
+.vocal input {
+	display: none;
+}
+
+.vocal:HOVER input {
+	display: inline;
+}
+ 

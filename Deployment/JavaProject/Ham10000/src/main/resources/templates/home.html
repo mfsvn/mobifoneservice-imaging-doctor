@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="header :: header (pageTitle='Imaging Doctor') ">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<nav th:replace="header :: navigation"></nav>
+
+<div class="container">
+    <div id="content" class="content">
+        <div class="container">
+
+            <div class="col-lg-6">
+                <article class="col-lg-12">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="panel panel-form">
+                                <div class="panel-heading">
+                                    <h3 class="title" >Mobifone Service Imaging Doctor</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <form role="form" method="post" enctype="multipart/form-data" th:action="|predict/|"  >
+                                        <!-- Knowledge image -->
+                                        <div class="form-group">
+                                            <label for="image" class="control-label" >Image</label>
+                                            <!--                                            <span style="color: red" th:if="${#fields.hasErrors('username')}" th:errors="*{username}" ></span>-->
+                                            <div class="has-feedback">
+                                                <input type="file" class="form-control" id="image" name="image" placeholder="Image">
+                                                <span class="fa fa-keyboard-o form-control-feedback" aria-hidden="true"></span>
+                                            </div>
+                                        </div>
+
+
+                                        <!-- user name -->
+<!--                                        <div class="form-group">-->
+<!--                                            <label for="pass" class="control-label" >Update menu name</label>-->
+<!--                                            &lt;!&ndash;                                            <span style="color: red" th:if="${#fields.hasErrors('username')}" th:errors="*{username}" ></span>&ndash;&gt;-->
+<!--                                            <div class="has-feedback">-->
+<!--                                                <input type="text" class="form-control" id="pass" name="pass" placeholder="Password" >-->
+<!--                                                <span class="fa fa-keyboard-o form-control-feedback" aria-hidden="true"></span>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+
+
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+
+                                    </form>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <div class="clearfix"></div>
+            </div>
+            <div class="col-lg-6" style="text-align: center">
+                <article class="col-lg-6">
+                    <div class="row">
+                        <img th:src="${image}"   style=" max-width: 100% "  alt=""/>
+                    </div>
+                    <br/>
+                    <div class="row"  >
+                        <div th:if="${image != null}" class="progress"  >
+                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40"
+                                 aria-valuemin="0" aria-valuemax="100" th:style="${'width:' + certainty + '%'}">
+
+                            </div>
+
+                        </div>
+                        <span th:if="${image != null}" th:text="${index + ': ' + certainty + '%'}" ></span>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div><!-- end content -->
+</div> <!-- end container -->
+
+
+
+<div th:replace="header :: footer"></div>
+</body>
+</html>
