@@ -13,7 +13,7 @@ Medical imaging doctor developed by Mobifone Service
 
 - Remote (ssh) to GCP server
 - Go to folder `cd /home/tunguyen37659/python/HAM10000_001`
-- Upload model (IRV2+SA.hdf5)
+- Upload model (IRV2+SA.hdf5) (already existing one)
 - Execute in cmd: `conda activate djangoenv002`
 - Execute in cmd: `python manage.py runserver 0.0.0.0:8000`
 - Go to http://35.220.190.201:8080/Ham10000-0.1/login to test the system
