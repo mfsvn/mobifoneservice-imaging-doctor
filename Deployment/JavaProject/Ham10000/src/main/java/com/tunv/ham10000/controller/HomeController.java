@@ -86,7 +86,7 @@ public class HomeController {
                     break;
                     case 5: indexStr = "mel";
                     break;
-                    case 6: indexStr = "mv";
+                    case 6: indexStr = "nv";
                     break;
                     case 7: indexStr = "vasc";
                     break;
