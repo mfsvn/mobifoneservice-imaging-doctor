@@ -19,8 +19,20 @@ Medical imaging doctor developed by Mobifone Service
 - Go to http://35.220.190.201:8080/Ham10000-0.1/login to test the system
 
 # Steps to loading and get skin lesion type predicted back
-- Register your user name and password
+- Register your username and password
 
 <img src="Images/register.png">
+
+- Login with your username and password
+
+<img src="Images/login.png">
+
+- Loading an image and get predict
+
+<img src="Images/upload_predict.png">
+
+- Example of result
+
+<img src="Images/predicted_skin_lesion.png">
 
 
