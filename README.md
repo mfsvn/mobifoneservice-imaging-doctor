@@ -21,6 +21,6 @@ Medical imaging doctor developed by Mobifone Service
 # Steps to loading and get skin lesion type predicted back
 - Register your user name and password
 
-<img src="Image/register.png">
+<img src="Images/register.png">
 
 
