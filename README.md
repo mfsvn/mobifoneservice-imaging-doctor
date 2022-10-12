@@ -27,7 +27,7 @@ Medical imaging doctor developed by Mobifone Service
 
 <img src="Images/login.png">
 
-- Loading an image and get predict
+- Loading an image and predict
 
 <img src="Images/upload_predict.png">
 
