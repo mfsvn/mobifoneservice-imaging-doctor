@@ -1,4 +1,4 @@
-# mobifoneservice-imaging-doctor
+# Mobifoneservice-imaging-doctor
 Medical imaging doctor developed by Mobifone Service
 
 **Development environment**
