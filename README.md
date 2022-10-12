@@ -18,7 +18,7 @@ Medical imaging doctor developed by Mobifone Service
 - Execute in cmd: `python manage.py runserver 0.0.0.0:8000`
 - Go to http://35.220.190.201:8080/Ham10000-0.1/login to test the system
 
-# Steps to loading and get skin lesion type predicted back
+# Steps to load and get skin lesion type predicted back
 - Register your username and password
 
 <img src="Images/register.png">
